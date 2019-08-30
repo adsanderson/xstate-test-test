@@ -15,6 +15,11 @@ const toggleSharedModel = createModel(toggleMachine, {
       exec: async renderResult => {
         await fireEvent.click(renderResult.getByText("Sub toggle"));
       }
+    },
+    "done.invoke.simplePromise": {
+      exec: async renderResult => {
+        // await fireEvent.click(renderResult.getByText("Sub toggle"));
+      }
     }
   }
 });
@@ -22,10 +27,12 @@ const toggleSharedModel = createModel(toggleMachine, {
 afterEach(cleanup);
 
 describe("toggle shared", () => {
+  console.time("plan");
+  console.time("plan2");
   const testPlans = toggleSharedModel.getShortestPathPlans({
     filter: state => state.context.loops >= 0 && state.context.loops <= 2
   });
-
+  console.timeEnd("plan");
   testPlans.forEach(async plan => {
     describe(`plan: ${plan.description}`, () => {
       plan.paths.forEach(path => {
@@ -38,21 +45,8 @@ describe("toggle shared", () => {
     });
   });
 
-  // const testPlansSimple = toggleModel.getSimplePathPlans();
-
-  // testPlansSimple.forEach(async plan => {
-  //   describe(`plan: ${plan.description}`, () => {
-  //     plan.paths.forEach(path => {
-  //       it(`path: ${path.description}`, async () => {
-  //         const renderResult = render(<App />);
-
-  //         await path.test(renderResult);
-  //       });
-  //     });
-  //   });
-  // });
-
   it("should have full coverage", () => {
+    console.timeEnd("plan2");
     return toggleSharedModel.testCoverage();
   });
 });

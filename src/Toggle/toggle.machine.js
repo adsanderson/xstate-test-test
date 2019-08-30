@@ -30,7 +30,7 @@ export const toggleMachine = Machine({
     },
     fourT: {
       invoke: {
-        src: () => new Promise(res => setTimeout(() => res("done"), 200)),
+        src: () => new Promise(res => setTimeout(() => res("done"), 100)),
         onDone: "four"
       }
     },

@@ -2,7 +2,7 @@ import React from "react";
 import { useMachine } from "@xstate/react";
 import { toggleMachine } from "./ToggleShared.machine";
 
-export function ToggleShared() {
+export function TestCaseA() {
   const [state, send] = useMachine(
     toggleMachine.withConfig({
       services: {

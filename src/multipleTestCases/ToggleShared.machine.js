@@ -1,4 +1,12 @@
-import { Machine, assign } from "xstate";
+import { Machine, assign, spawn } from "xstate";
+
+const someMachine = Machine({
+  id: "some",
+  initial: "none",
+  states: {
+    none: {}
+  }
+});
 
 export const toggleMachine = Machine({
   id: "toggle",
@@ -17,23 +25,23 @@ export const toggleMachine = Machine({
         subOne: {
           on: { SUB: "subTwo" },
           meta: {
-            test: async renderResult => {
-              await renderResult.findByText("subOne", { exact: false });
+            test: async test => {
+              await test.tests.subOne(test.payload);
             }
           }
         },
         subTwo: {
           on: { SUB: "subOne" },
           meta: {
-            test: async renderResult => {
-              await renderResult.findByText("subTwo", { exact: false });
+            test: async test => {
+              await test.tests.subTwo(test.payload);
             }
           }
         }
       },
       meta: {
-        test: async renderResult => {
-          await renderResult.findByText("one", { exact: false });
+        test: async test => {
+          await test.tests.one(test.payload);
         }
       }
     },
@@ -42,8 +50,8 @@ export const toggleMachine = Machine({
         TOGGLE: "three"
       },
       meta: {
-        test: async renderResult => {
-          await renderResult.findByText('"two"');
+        test: async test => {
+          await test.tests.two(test.payload);
         }
       }
     },
@@ -52,8 +60,8 @@ export const toggleMachine = Machine({
         TOGGLE: "threeTransition"
       },
       meta: {
-        test: async renderResult => {
-          await renderResult.findByText('"three"');
+        test: async test => {
+          await test.tests.three(test.payload);
         }
       }
     },
@@ -63,8 +71,8 @@ export const toggleMachine = Machine({
         onDone: "four"
       },
       meta: {
-        test: async renderResult => {
-          await renderResult.findByText('"threeTransition"');
+        test: async test => {
+          await test.tests.threeTransition(test.payload);
         }
       }
     },
@@ -78,8 +86,8 @@ export const toggleMachine = Machine({
         }
       },
       meta: {
-        test: async renderResult => {
-          await renderResult.findByText('"four"');
+        test: async test => {
+          await test.tests.four(test.payload);
         }
       }
     }
