@@ -14,7 +14,7 @@ export function TestCaseB() {
     <div className="App">
       <h2>
         {JSON.stringify(state.value)
-          .split()
+          .split("")
           .reverse()
           .join("")}
       </h2>

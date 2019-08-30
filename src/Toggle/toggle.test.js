@@ -78,17 +78,15 @@ const toggleMachine = Machine({
   }
 });
 
-const toggleModel = createModel(toggleMachine, {
-  events: {
-    TOGGLE: {
-      exec: async renderResult => {
-        await fireEvent.click(renderResult.getByText("Toggle"));
-      }
-    },
-    SUB: {
-      exec: async renderResult => {
-        await fireEvent.click(renderResult.getByText("Sub toggle"));
-      }
+const toggleModel = createModel(toggleMachine).withEvents({
+  TOGGLE: {
+    exec: async renderResult => {
+      await fireEvent.click(renderResult.getByText("Toggle"));
+    }
+  },
+  SUB: {
+    exec: async renderResult => {
+      await fireEvent.click(renderResult.getByText("Sub toggle"));
     }
   }
 });

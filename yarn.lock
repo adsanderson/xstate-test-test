@@ -1451,12 +1451,13 @@
   resolved "https://registry.yarnpkg.com/@xstate/react/-/react-0.7.0.tgz#946986a65da73f41faaf9cfa7748dff761e1acd1"
   integrity sha512-1ZWG/rpmA3AgtrRu9Zqz6hOF1av+McffC+LLQjESyrFYawz9pFlFB6+DqJgcID9NPnjl+S9PGzfAVpa9P02QTw==
 
-"@xstate/test@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@xstate/test/-/test-0.0.1.tgz#9b266da18b763bd988b05b42a3bef3415093c272"
-  integrity sha512-2BbQyCcAlzdcX/O0ca4QrcOGPXoIMIhrxZDKUne1FJsMrr38wtWe4kSzN1aDfN2MEqhGLiFQUWWS5ZD1k7N+qw==
+"@xstate/test@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@xstate/test/-/test-0.1.0.tgz#b43eceb1b6f88acfac56c2d02d66464442921513"
+  integrity sha512-6RT1jfEU8v5o5fa4nmNVX19KCRcB0YZo8qboy8LWMoy4Rpp6Noyu4LjLUnCtiPCBbFdf5RK3dieWb+5pqxjfGQ==
   dependencies:
     "@xstate/graph" "^1.0.0-rc1.1"
+    chalk "^2.4.2"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"

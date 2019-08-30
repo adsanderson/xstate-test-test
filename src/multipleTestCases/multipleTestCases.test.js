@@ -6,7 +6,7 @@ import { TestCaseB } from "./TestCaseB";
 import { toggleMachine } from "./ToggleShared.machine";
 
 const testsForTestCaseA = {
-  one: renderResult => console.log(renderResult), // renderResult.findByText("one", { exact: false }),
+  one: renderResult => renderResult.findByText("one", { exact: false }),
   subOne: renderResult => renderResult.findByText("subOne", { exact: false }),
   subTwo: renderResult => renderResult.findByText("subTwo", { exact: false }),
   two: renderResult => renderResult.findByText('"two"'),
@@ -17,7 +17,7 @@ const testsForTestCaseA = {
 
 const reversString = str =>
   str
-    .split()
+    .split("")
     .reverse()
     .join("");
 
@@ -35,21 +35,19 @@ const testsForTestCaseB = {
   four: renderResult => renderResult.findByText(reversString('"four"'))
 };
 
-const toggleSharedModel = createModel(toggleMachine, {
-  events: {
-    TOGGLE: {
-      exec: async test => {
-        await fireEvent.click(test.payload.getByText("Toggle"));
-      }
-    },
-    SUB: {
-      exec: async test => {
-        await fireEvent.click(test.payload.getByText("Sub toggle"));
-      }
-    },
-    "done.invoke.simplePromise": {
-      exec: async test => {}
+const toggleSharedModel = createModel(toggleMachine).withEvents({
+  TOGGLE: {
+    exec: async test => {
+      await fireEvent.click(test.payload.getByText("Toggle"));
     }
+  },
+  SUB: {
+    exec: async test => {
+      await fireEvent.click(test.payload.getByText("Sub toggle"));
+    }
+  },
+  "done.invoke.simplePromise": {
+    exec: async test => {}
   }
 });
 

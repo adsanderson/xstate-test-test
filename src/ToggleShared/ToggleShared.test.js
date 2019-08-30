@@ -4,22 +4,20 @@ import { render, cleanup, fireEvent } from "@testing-library/react";
 import { ToggleShared } from "./ToggleShared";
 import { toggleMachine } from "./ToggleShared.machine";
 
-const toggleSharedModel = createModel(toggleMachine, {
-  events: {
-    TOGGLE: {
-      exec: async renderResult => {
-        await fireEvent.click(renderResult.getByText("Toggle"));
-      }
-    },
-    SUB: {
-      exec: async renderResult => {
-        await fireEvent.click(renderResult.getByText("Sub toggle"));
-      }
-    },
-    "done.invoke.simplePromise": {
-      exec: async renderResult => {
-        // await fireEvent.click(renderResult.getByText("Sub toggle"));
-      }
+const toggleSharedModel = createModel(toggleMachine).withEvents({
+  TOGGLE: {
+    exec: async renderResult => {
+      await fireEvent.click(renderResult.getByText("Toggle"));
+    }
+  },
+  SUB: {
+    exec: async renderResult => {
+      await fireEvent.click(renderResult.getByText("Sub toggle"));
+    }
+  },
+  "done.invoke.simplePromise": {
+    exec: async renderResult => {
+      // await fireEvent.click(renderResult.getByText("Sub toggle"));
     }
   }
 });
