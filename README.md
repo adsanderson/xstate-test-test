@@ -1,3 +1,16 @@
+# @xstate/test tests
+
+experiments include:
+
+- Tests and component with shared config
+- Tests and component with different configs
+- Multiple components that share a config but implemented differently, implementation specific tests
+- Config that uses a services and implementing custom events to mock responses
+- Guards with context and events
+- Adding a MBT to a legacy component
+
+# CRA
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

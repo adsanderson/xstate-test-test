@@ -5,6 +5,7 @@ import "./App.css";
 import { TestCaseA } from "./multipleTestCases/TestCaseA";
 import { TestCaseB } from "./multipleTestCases/TestCaseB";
 import { PromiseTestCase } from "./PromiseTestCase/PromiseTestCase";
+import { GuardTestCase } from "./GuardTestCase/GuardTestCase";
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
       <PromiseTestCase
         aPromise={() => new Promise(res => setTimeout(res, 100))}
       />
+      <GuardTestCase />
     </div>
   );
 }
