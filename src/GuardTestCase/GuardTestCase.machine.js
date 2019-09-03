@@ -6,7 +6,7 @@ const l = content => {
 };
 
 const contextGuard = ctx => ctx.isBadFlag;
-const eventGuard = (_, evt) => l(evt.isNext);
+const eventGuard = (_, evt) => false;
 
 export const guardMachine = Machine({
   id: "guardTestCase",

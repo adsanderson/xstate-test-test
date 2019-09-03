@@ -1,6 +1,6 @@
 import React from "react";
 import { useMachine } from "@xstate/react";
-import { guardMachine } from "./GuardTestCase.machine";
+import { guardMachine } from "./ExistingComponentTestCase.machine";
 
 export function GuardTestCase() {
   const [state, send] = useMachine(guardMachine);
