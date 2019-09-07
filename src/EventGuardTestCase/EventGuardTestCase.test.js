@@ -1,13 +1,13 @@
 import React from "react";
 import { createModel } from "@xstate/test";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import { GuardTestCase } from "./GuardTestCase";
-import { guardMachine } from "./GuardTestCase.machine";
+import { EventGuardTestCase } from "./EventGuardTestCase";
+import { guardMachine } from "./EventGuardTestCase.machine";
 
 const guardTestCaseModel = createModel(
   guardMachine.withConfig({
     guards: {
-      eventGuard: () => true
+      eventGuard: (_, evt) => evt
     }
   })
 ).withEvents({
@@ -27,7 +27,7 @@ describe("Event guard test case", () => {
     describe(`plan: ${plan.description}`, () => {
       plan.paths.forEach(path => {
         it(`path: ${path.description}`, async () => {
-          const renderResult = render(<GuardTestCase />);
+          const renderResult = render(<EventGuardTestCase />);
 
           const payload = {
             renderResult
