@@ -1,10 +1,16 @@
 import React from "react";
 import { createModel } from "@xstate/test";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import { GuardTestCase } from "./GuardTestCase";
-import { guardMachine } from "./GuardTestCase.machine";
+import { ContextGuardTestCase } from "./ContextGuardTestCase";
+import { guardMachine } from "./ContextGuardTestCase.machine";
 
-const guardTestCaseModel = createModel(guardMachine).withEvents({
+const guardTestCaseModel = createModel(
+  guardMachine.withConfig({
+    guards: {
+      eventGuard: () => true
+    }
+  })
+).withEvents({
   TOGGLE_BAD_FLAG: {
     exec: async function(payload) {
       await fireEvent.click(payload.renderResult.getByText("toggle bad flag"));
@@ -24,14 +30,14 @@ const guardTestCaseModel = createModel(guardMachine).withEvents({
 
 afterEach(cleanup);
 
-describe("guard test case", () => {
+describe("Context guard test case", () => {
   const testPlans = guardTestCaseModel.getShortestPathPlans();
 
   testPlans.forEach(async plan => {
     describe(`plan: ${plan.description}`, () => {
       plan.paths.forEach(path => {
         it(`path: ${path.description}`, async () => {
-          const renderResult = render(<GuardTestCase />);
+          const renderResult = render(<ContextGuardTestCase />);
 
           const payload = {
             renderResult
