@@ -1,10 +1,10 @@
 import React from "react";
 import { useMachine } from "@xstate/react";
-import { guardMachine } from "./EventGuardTestCase.machine";
+import { eventGuardMachine } from "./EventGuardTestCase.machine";
 
 export function EventGuardTestCase() {
   const [state, send] = useMachine(
-    guardMachine.withConfig({
+    eventGuardMachine.withConfig({
       guards: {
         eventGuard: (_, evt) => evt.isNext
       }
@@ -14,10 +14,11 @@ export function EventGuardTestCase() {
     <div className="App">
       <h2>{JSON.stringify(state.value)}</h2>
       <button onClick={() => send({ type: "TRY_EVENT", isNext: true })}>
-        try event
+        go left
       </button>
-
-      <h3>{state.context.isBadFlag}</h3>
+      <button onClick={() => send({ type: "TRY_EVENT", isNext: false })}>
+        go right
+      </button>
     </div>
   );
 }

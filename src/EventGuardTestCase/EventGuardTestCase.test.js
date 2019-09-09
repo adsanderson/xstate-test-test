@@ -2,19 +2,21 @@ import React from "react";
 import { createModel } from "@xstate/test";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import { EventGuardTestCase } from "./EventGuardTestCase";
-import { guardMachine } from "./EventGuardTestCase.machine";
+import { eventGuardMachine } from "./EventGuardTestCase.machine";
 
 const guardTestCaseModel = createModel(
-  guardMachine.withConfig({
+  eventGuardMachine.withConfig({
     guards: {
-      eventGuard: (_, evt) => evt
+      eventGuard: (_, evt) => evt.isNext
     }
   })
 ).withEvents({
   TRY_EVENT: {
-    exec: async function(payload) {
-      await fireEvent.click(payload.renderResult.getByText("try event"));
-    }
+    exec: async function({renderResult: {getByText}}, event) {
+      const text = event.isNext ? "go left" : 'go right';
+      await fireEvent.click(getByText(text));
+    },
+    cases: [{isNext: true}, {isNext: false}]
   }
 });
 
