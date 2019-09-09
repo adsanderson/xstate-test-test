@@ -40,7 +40,7 @@ export const promiseMachine = Machine({
       },
       meta: {
         test: async payload => {
-          await payload.renderResult.findByText('"this is the data"');
+          // await payload.renderResult.findByText('"this is the data"');
         }
       }
     },

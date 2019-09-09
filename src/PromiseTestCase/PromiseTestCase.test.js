@@ -1,6 +1,6 @@
 import React from "react";
 import { createModel } from "@xstate/test";
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { render, cleanup, fireEvent, act } from "@testing-library/react";
 import { PromiseTestCase } from "./PromiseTestCase";
 import { promiseMachine } from "./PromiseTestCase.machine";
 
@@ -16,39 +16,39 @@ const promiseTestCaseModel = createModel(promiseMachine).withEvents({
     }
   },
   "done.invoke.simplePromise": {
-    exec: async payload => {}
+    exec: async (payload, event) => {
+      await act(async () => {
+        await payload.aPromise.resolve(event.data);
+      });
+    },
+    cases: [{ data: "test" }, { data: "this is the data" }]
   },
   "error.platform.simplePromise": {
-    exec: async payload => {}
+    exec: async payload => {
+      setTimeout(() => payload.aPromise.reject(), 16);
+    }
   }
 });
 
 afterEach(cleanup);
 
-function setService(path, serviceName, preDone, preError) {
-  if (path.state.event.type === `done.invoke.${serviceName}`) {
-    return preDone;
-  }
-  if (path.state.event.type === `error.platform.${serviceName}`) {
-    return preError;
-  }
-  if (
-    path.segments.some(seg => seg.event.type === `done.invoke.${serviceName}`)
-  ) {
-    return preDone;
-  }
-  if (
-    path.segments.some(
-      seg => seg.event.type === `error.platform.${serviceName}`
-    )
-  ) {
-    return preError;
-  }
-  return preDone;
+function defer() {
+  var res, rej;
+
+  var promise = new Promise((resolve, reject) => {
+    res = resolve;
+    rej = reject;
+  });
+
+  promise.resolve = res;
+  promise.reject = rej;
+
+  return promise;
 }
 
 describe("promise test case", () => {
   const testPlans = promiseTestCaseModel.getShortestPathPlans();
+
   testPlans.forEach(async plan => {
     describe(`plan: ${plan.description}`, () => {
       plan.paths.forEach(path => {
@@ -56,26 +56,14 @@ describe("promise test case", () => {
           const mockPromise = jest.fn();
           mockPromise.mockResolvedValue('"this is the data"');
 
-          const pathDependentPromise = setService(
-            path,
-            "simplePromise",
-            () =>
-              new Promise(res =>
-                setTimeout(() => res('"this is the data"'), 50)
-              ),
-            () =>
-              new Promise((_, rej) =>
-                setTimeout(() => rej('"this is the data"'), 50)
-              )
-          );
+          const d = defer();
 
-          const renderResult = render(
-            <PromiseTestCase aPromise={pathDependentPromise} />
-          );
+          const renderResult = render(<PromiseTestCase aPromise={() => d} />);
 
           const payload = {
             mockPromise,
-            renderResult
+            renderResult,
+            aPromise: d
           };
 
           await path.test(payload);

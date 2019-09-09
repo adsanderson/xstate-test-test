@@ -5,8 +5,23 @@ import "./App.css";
 import { TestCaseA } from "./multipleTestCases/TestCaseA";
 import { TestCaseB } from "./multipleTestCases/TestCaseB";
 import { PromiseTestCase } from "./PromiseTestCase/PromiseTestCase";
-import { GuardTestCase } from "./GuardTestCase/GuardTestCase";
 import { ExistingComponentTestCase } from "./ExistingComponentTestCase/ExistingComponentTestCase";
+
+function defer() {
+  var res, rej;
+
+  var promise = new Promise((resolve, reject) => {
+    res = resolve;
+    rej = reject;
+  });
+
+  promise.resolve = res;
+  promise.reject = rej;
+
+  return promise;
+}
+
+const d = defer();
 
 export function App() {
   return (
@@ -16,9 +31,13 @@ export function App() {
       <TestCaseA />
       <TestCaseB />
       <PromiseTestCase
-        aPromise={() => new Promise(res => setTimeout(res, 100))}
+        aPromise={() => {
+          // const d = defer();
+          // console.log(d)
+          setTimeout(() => d.resolve("data"), 100);
+          return d;
+        }}
       />
-      <GuardTestCase />
       <ExistingComponentTestCase />
     </div>
   );
