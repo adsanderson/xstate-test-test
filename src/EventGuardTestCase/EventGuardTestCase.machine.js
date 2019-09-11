@@ -17,8 +17,8 @@ export const eventGuardMachine = Machine({
         ]
       },
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("event_initial", {
+        test: async testContext => {
+          await testContext.renderResult.findByText("event_initial", {
             exact: false
           });
         }
@@ -27,8 +27,8 @@ export const eventGuardMachine = Machine({
     event_left: {
       type: "final",
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("event_left", {
+        test: async testContext => {
+          await testContext.renderResult.findByText("event_left", {
             exact: false
           });
         }
@@ -37,8 +37,8 @@ export const eventGuardMachine = Machine({
     event_right: {
       type: "final",
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("event_right", {
+        test: async testContext => {
+          await testContext.renderResult.findByText("event_right", {
             exact: false
           });
         }

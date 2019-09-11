@@ -26,8 +26,8 @@ export const guardMachine = Machine({
         TRY_CONTEXT: "context_guarded"
       },
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("start", {
+        test: async testContext => {
+          await testContext.renderResult.findByText("start", {
             exact: false
           });
         }
@@ -50,8 +50,8 @@ export const guardMachine = Machine({
             ]
           },
           meta: {
-            test: async payload => {
-              await payload.renderResult.findByText("context_initial", {
+            test: async testContext => {
+              await testContext.renderResult.findByText("context_initial", {
                 exact: false
               });
             }
@@ -60,8 +60,8 @@ export const guardMachine = Machine({
         context_left: {
           type: "final",
           meta: {
-            test: async payload => {
-              await payload.renderResult.findByText("context_left", {
+            test: async testContext => {
+              await testContext.renderResult.findByText("context_left", {
                 exact: false
               });
             }
@@ -70,8 +70,8 @@ export const guardMachine = Machine({
         context_right: {
           type: "final",
           meta: {
-            test: async payload => {
-              await payload.renderResult.findByText("context_right", {
+            test: async testContext => {
+              await testContext.renderResult.findByText("context_right", {
                 exact: false
               });
             }
@@ -79,8 +79,8 @@ export const guardMachine = Machine({
         }
       },
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("context_guarded", {
+        test: async testContext => {
+          await testContext.renderResult.findByText("context_guarded", {
             exact: false
           });
         }

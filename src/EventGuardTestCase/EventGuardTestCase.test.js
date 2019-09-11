@@ -12,11 +12,11 @@ const guardTestCaseModel = createModel(
   })
 ).withEvents({
   TRY_EVENT: {
-    exec: async function({renderResult: {getByText}}, event) {
-      const text = event.isNext ? "go left" : 'go right';
+    exec: async function({ renderResult: { getByText } }, event) {
+      const text = event.isNext ? "go left" : "go right";
       await fireEvent.click(getByText(text));
     },
-    cases: [{isNext: true}, {isNext: false}]
+    cases: [{ isNext: true }, { isNext: false }]
   }
 });
 
@@ -31,11 +31,11 @@ describe("Event guard test case", () => {
         it(`path: ${path.description}`, async () => {
           const renderResult = render(<EventGuardTestCase />);
 
-          const payload = {
+          const testContext = {
             renderResult
           };
 
-          await path.test(payload);
+          await path.test(testContext);
         });
       });
     });

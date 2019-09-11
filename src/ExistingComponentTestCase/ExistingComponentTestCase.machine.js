@@ -9,16 +9,15 @@ export const existingComponentMachine = Machine({
         SEARCH: "open"
       },
       meta: {
-        test: async payload => {
-          return true;
-          // await payload.renderResult.findByText("start");
+        test: async testContext => {
+          await testContext.renderResult.findByText("Enter a fruit");
         }
       }
     },
     open: {
       meta: {
-        test: async payload => {
-          const list = await payload.renderResult.findByRole("listbox");
+        test: async testContext => {
+          const list = await testContext.renderResult.findByRole("listbox");
           expect(list.childNodes.length).toBe(1);
         }
       }

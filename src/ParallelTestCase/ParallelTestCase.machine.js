@@ -13,8 +13,8 @@ export const parallelMachine = Machine({
             TOGGLE_BOLD: "off"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         },
@@ -23,15 +23,15 @@ export const parallelMachine = Machine({
             TOGGLE_BOLD: "on"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         }
       },
       meta: {
-        test: async payload => {
-          await payload.test(payload);
+        test: async testContext => {
+          await testContext.test(testContext);
         }
       }
     },
@@ -43,8 +43,8 @@ export const parallelMachine = Machine({
             TOGGLE_ITALIC: "off"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         },
@@ -53,15 +53,15 @@ export const parallelMachine = Machine({
             TOGGLE_ITALIC: "on"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         }
       },
       meta: {
-        test: async payload => {
-          await payload.test(payload);
+        test: async testContext => {
+          await testContext.test(testContext);
         }
       }
     },
@@ -73,8 +73,8 @@ export const parallelMachine = Machine({
             TOGGLE_UNDERLINE: "off"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         },
@@ -83,15 +83,15 @@ export const parallelMachine = Machine({
             TOGGLE_UNDERLINE: "on"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         }
       },
       meta: {
-        test: async payload => {
-          await payload.test(payload);
+        test: async testContext => {
+          await testContext.test(testContext);
         }
       }
     },
@@ -103,8 +103,8 @@ export const parallelMachine = Machine({
             TOGGLE_STRIKE: "off"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         },
@@ -113,15 +113,15 @@ export const parallelMachine = Machine({
             TOGGLE_STRIKE: "on"
           },
           meta: {
-            test: async payload => {
-              await payload.test(payload);
+            test: async testContext => {
+              await testContext.test(testContext);
             }
           }
         }
       },
       meta: {
-        test: async payload => {
-          await payload.test(payload);
+        test: async testContext => {
+          await testContext.test(testContext);
         }
       }
     }

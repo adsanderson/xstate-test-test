@@ -38,12 +38,12 @@ const testsForTestCaseB = {
 const toggleSharedModel = createModel(toggleMachine).withEvents({
   TOGGLE: {
     exec: async test => {
-      await fireEvent.click(test.payload.getByText("Toggle"));
+      await fireEvent.click(test.testContext.getByText("Toggle"));
     }
   },
   SUB: {
     exec: async test => {
-      await fireEvent.click(test.payload.getByText("Sub toggle"));
+      await fireEvent.click(test.testContext.getByText("Sub toggle"));
     }
   },
   "done.invoke.simplePromise": {
@@ -65,7 +65,7 @@ describe("toggle shared", () => {
 
           const args = {
             tests: testsForTestCaseA,
-            payload: renderResult
+            testContext: renderResult
           };
 
           await path.test(args);
@@ -82,7 +82,7 @@ describe("toggle shared", () => {
 
           const args = {
             tests: testsForTestCaseB,
-            payload: renderResult
+            testContext: renderResult
           };
 
           await path.test(args);

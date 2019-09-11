@@ -12,18 +12,20 @@ const guardTestCaseModel = createModel(
   })
 ).withEvents({
   TOGGLE_BAD_FLAG: {
-    exec: async function(payload) {
-      await fireEvent.click(payload.renderResult.getByText("toggle bad flag"));
+    exec: async function(testContext) {
+      await fireEvent.click(
+        testContext.renderResult.getByText("toggle bad flag")
+      );
     }
   },
   TRY_CONTEXT: {
-    exec: async function(payload) {
-      await fireEvent.click(payload.renderResult.getByText("try context"));
+    exec: async function(testContext) {
+      await fireEvent.click(testContext.renderResult.getByText("try context"));
     }
   },
   TRY_EVENT: {
-    exec: async function(payload) {
-      await fireEvent.click(payload.renderResult.getByText("try event"));
+    exec: async function(testContext) {
+      await fireEvent.click(testContext.renderResult.getByText("try event"));
     }
   }
 });
@@ -39,11 +41,11 @@ describe("Context guard test case", () => {
         it(`path: ${path.description}`, async () => {
           const renderResult = render(<ContextGuardTestCase />);
 
-          const payload = {
+          const testContext = {
             renderResult
           };
 
-          await path.test(payload);
+          await path.test(testContext);
         });
       });
     });

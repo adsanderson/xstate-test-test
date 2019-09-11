@@ -7,8 +7,8 @@ import { parallelMachine } from "./ParallelTestCase.machine";
 
 const guardTestCaseModel = createModel(parallelMachine).withEvents({
   TOGGLE_BOLD: {
-    exec: async function(payload) {
-      await fireEvent.click(payload.renderResult.getByText("Bold"));
+    exec: async function(testContext) {
+      await fireEvent.click(testContext.renderResult.getByText("Bold"));
     }
   },
   TOGGLE_ITALIC: {
@@ -55,7 +55,7 @@ describe("Event guard test case", () => {
               expectation
             );
 
-          const payload = {
+          const testContext = {
             renderResult,
             test: async () => {
               await t("bold.on", '"bold":"on"');
@@ -69,7 +69,7 @@ describe("Event guard test case", () => {
             }
           };
 
-          await path.test(payload);
+          await path.test(testContext);
         });
       });
     });

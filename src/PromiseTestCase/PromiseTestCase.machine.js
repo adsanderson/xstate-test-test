@@ -12,8 +12,8 @@ export const promiseMachine = Machine({
         FETCH: "fetching"
       },
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("idle");
+        test: async testContext => {
+          await testContext.renderResult.findByText("idle");
         }
       }
     },
@@ -29,8 +29,8 @@ export const promiseMachine = Machine({
         onError: "error"
       },
       meta: {
-        test: async function(payload) {
-          await payload.renderResult.findByText("fetching");
+        test: async function(testContext) {
+          await testContext.renderResult.findByText("fetching");
         }
       }
     },
@@ -39,8 +39,8 @@ export const promiseMachine = Machine({
         ACKNOWLEDGE: "final"
       },
       meta: {
-        test: async payload => {
-          // await payload.renderResult.findByText('"this is the data"');
+        test: async testContext => {
+          // await testContext.renderResult.findByText('"this is the data"');
         }
       }
     },
@@ -49,16 +49,16 @@ export const promiseMachine = Machine({
         ACKNOWLEDGE: "final"
       },
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("error");
+        test: async testContext => {
+          await testContext.renderResult.findByText("error");
         }
       }
     },
     final: {
       type: "final",
       meta: {
-        test: async payload => {
-          await payload.renderResult.findByText("final");
+        test: async testContext => {
+          await testContext.renderResult.findByText("final");
         }
       }
     }

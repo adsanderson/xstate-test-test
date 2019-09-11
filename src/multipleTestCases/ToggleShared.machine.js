@@ -26,7 +26,7 @@ export const toggleMachine = Machine({
           on: { SUB: "subTwo" },
           meta: {
             test: async test => {
-              await test.tests.subOne(test.payload);
+              await test.tests.subOne(test.testContext);
             }
           }
         },
@@ -34,14 +34,14 @@ export const toggleMachine = Machine({
           on: { SUB: "subOne" },
           meta: {
             test: async test => {
-              await test.tests.subTwo(test.payload);
+              await test.tests.subTwo(test.testContext);
             }
           }
         }
       },
       meta: {
         test: async test => {
-          await test.tests.one(test.payload);
+          await test.tests.one(test.testContext);
         }
       }
     },
@@ -51,7 +51,7 @@ export const toggleMachine = Machine({
       },
       meta: {
         test: async test => {
-          await test.tests.two(test.payload);
+          await test.tests.two(test.testContext);
         }
       }
     },
@@ -61,7 +61,7 @@ export const toggleMachine = Machine({
       },
       meta: {
         test: async test => {
-          await test.tests.three(test.payload);
+          await test.tests.three(test.testContext);
         }
       }
     },
@@ -72,7 +72,7 @@ export const toggleMachine = Machine({
       },
       meta: {
         test: async test => {
-          await test.tests.threeTransition(test.payload);
+          await test.tests.threeTransition(test.testContext);
         }
       }
     },
@@ -87,7 +87,7 @@ export const toggleMachine = Machine({
       },
       meta: {
         test: async test => {
-          await test.tests.four(test.payload);
+          await test.tests.four(test.testContext);
         }
       }
     }

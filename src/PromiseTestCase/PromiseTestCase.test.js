@@ -6,26 +6,26 @@ import { promiseMachine } from "./PromiseTestCase.machine";
 
 const promiseTestCaseModel = createModel(promiseMachine).withEvents({
   FETCH: {
-    exec: async function(payload) {
-      await fireEvent.click(payload.renderResult.getByText("Fetch"));
+    exec: async function(testContext) {
+      await fireEvent.click(testContext.renderResult.getByText("Fetch"));
     }
   },
   ACKNOWLEDGE: {
-    exec: async payload => {
-      await fireEvent.click(payload.renderResult.getByText("Acknowledge"));
+    exec: async testContext => {
+      await fireEvent.click(testContext.renderResult.getByText("Acknowledge"));
     }
   },
   "done.invoke.simplePromise": {
-    exec: async (payload, event) => {
+    exec: async (testContext, event) => {
       await act(async () => {
-        await payload.aPromise.resolve(event.data);
+        await testContext.aPromise.resolve(event.data);
       });
     },
     cases: [{ data: "test" }, { data: "this is the data" }]
   },
   "error.platform.simplePromise": {
-    exec: async payload => {
-      setTimeout(() => payload.aPromise.reject(), 16);
+    exec: async testContext => {
+      setTimeout(() => testContext.aPromise.reject(), 16);
     }
   }
 });
@@ -60,13 +60,13 @@ describe("promise test case", () => {
 
           const renderResult = render(<PromiseTestCase aPromise={() => d} />);
 
-          const payload = {
+          const testContext = {
             mockPromise,
             renderResult,
             aPromise: d
           };
 
-          await path.test(payload);
+          await path.test(testContext);
         });
       });
     });

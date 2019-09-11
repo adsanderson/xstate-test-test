@@ -7,10 +7,16 @@ import { existingComponentMachine } from "./ExistingComponentTestCase.machine";
 const existingComponentTestCaseModel = createModel(
   existingComponentMachine
 ).withEvents({
-  SEARCH: payload => {
-    fireEvent.change(payload.renderResult.getByTestId("autocompleteInput"), {
-      target: { value: "apple" }
-    });
+  SEARCH: {
+    exec: (testContext, cases) => {
+      fireEvent.change(
+        testContext.renderResult.getByTestId("autocompleteInput"),
+        {
+          target: { value: "apple" }
+        }
+      );
+    },
+    cases: []
   }
 });
 
@@ -25,11 +31,11 @@ describe("existing component test case", () => {
         it(`path: ${path.description}`, async () => {
           const renderResult = render(<ExistingComponentTestCase />);
 
-          const payload = {
+          const testContext = {
             renderResult
           };
 
-          await path.test(payload);
+          await path.test(testContext);
         });
       });
     });
