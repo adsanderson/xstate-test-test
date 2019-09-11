@@ -6,6 +6,7 @@ import { TestCaseA } from "./multipleTestCases/TestCaseA";
 import { TestCaseB } from "./multipleTestCases/TestCaseB";
 import { PromiseTestCase } from "./PromiseTestCase/PromiseTestCase";
 import { ExistingComponentTestCase } from "./ExistingComponentTestCase/ExistingComponentTestCase";
+import { ParallelTestCase } from "./ParallelTestCase/ParallelGuardTestCase";
 
 function defer() {
   var res, rej;
@@ -38,6 +39,7 @@ export function App() {
           return d;
         }}
       />
+      <ParallelTestCase />
       <ExistingComponentTestCase />
     </div>
   );
