@@ -13,7 +13,7 @@ export function ExistingComponentTestCase() {
   const [selection, setSelection] = useState("");
   return (
     <Fragment>
-      <h3>{selection}</h3>
+      <h3 data-testid="selectionOutput">{selection}</h3>
 
       <Downshift
         onChange={selection =>

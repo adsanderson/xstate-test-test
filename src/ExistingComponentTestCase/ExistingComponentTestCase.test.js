@@ -8,15 +8,18 @@ const existingComponentTestCaseModel = createModel(
   existingComponentMachine
 ).withEvents({
   SEARCH: {
-    exec: (testContext, cases) => {
+    exec: (testContext, testCase) => {
       fireEvent.change(
         testContext.renderResult.getByTestId("autocompleteInput"),
         {
-          target: { value: "apple" }
+          target: testCase
         }
       );
     },
-    cases: []
+    cases: [{ value: "apple" }]
+  },
+  SELECT: {
+    exec: () => {}
   }
 });
 
