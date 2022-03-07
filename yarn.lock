@@ -2342,22 +2342,27 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xstate/graph@1.0.0", "@xstate/graph@^1.0.0":
+"@xstate/graph@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@xstate/graph/-/graph-1.0.0.tgz#657168ce35001bb915d419dc2bea9cd89d17b038"
   integrity sha512-QinBh+O7CEqqb//SSeJU++tdKex635Hzx0xCgF+yYtDs0RIx99qscRJXlIr2mjaV1g0c/j9wAgc/ZChd6mzgDA==
+
+"@xstate/graph@^1.4.1":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@xstate/graph/-/graph-1.4.2.tgz#14987fc1f6d4cf11dca31fe5e6cb14e802f7b299"
+  integrity sha512-XIh6opCf9ukXRj4dXe2fv2kwFFUl15B5Ob8ELNOOqDXB2BPyNwp6TaLe5KJn/na3gzC9B7LyOo+2d0dPkC8PWQ==
 
 "@xstate/react@0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@xstate/react/-/react-0.8.1.tgz#df200547cca24c909572b7aef1ddab8bca3a0603"
   integrity sha512-8voZm4GX3x70lNQVvoGedoObPYapkQIbgMhE+xOQEsm8Ait4Zto6R01SZ6WJD4qvLl8JPV6uq96OcFRdEsVESg==
 
-"@xstate/test@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@xstate/test/-/test-0.3.0.tgz#366ffd9eb349a5244d8e6d085d85b86879f4bca7"
-  integrity sha512-s9QlyyER/ox606+Ihw0TlQBDniU+OIveS1VQtm56FL+kKbUQGHO0NTBXX33z18MjrFt2hmmjgehs3wHB0RQ6sg==
+"@xstate/test@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@xstate/test/-/test-0.5.1.tgz#c3cf7c2f4c9b0527d562ac5663ea4cd0c8298f0b"
+  integrity sha512-Ltz46QR9QvEuhlNy+zvs+5ylfpGXzDBh+jVC1/WL8w88uEbN+Wf1bJ/Bi5OWVWWEgXJxfcmlavN4hJOqtQuqgQ==
   dependencies:
-    "@xstate/graph" "^1.0.0"
+    "@xstate/graph" "^1.4.1"
     chalk "^2.4.2"
 
 "@xtuc/ieee754@^1.2.0":
