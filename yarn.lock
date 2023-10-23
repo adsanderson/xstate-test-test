@@ -2342,22 +2342,22 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xstate/graph@1.0.0", "@xstate/graph@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@xstate/graph/-/graph-1.0.0.tgz#657168ce35001bb915d419dc2bea9cd89d17b038"
-  integrity sha512-QinBh+O7CEqqb//SSeJU++tdKex635Hzx0xCgF+yYtDs0RIx99qscRJXlIr2mjaV1g0c/j9wAgc/ZChd6mzgDA==
+"@xstate/graph@1.4.2", "@xstate/graph@^1.4.1":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@xstate/graph/-/graph-1.4.2.tgz#14987fc1f6d4cf11dca31fe5e6cb14e802f7b299"
+  integrity sha512-XIh6opCf9ukXRj4dXe2fv2kwFFUl15B5Ob8ELNOOqDXB2BPyNwp6TaLe5KJn/na3gzC9B7LyOo+2d0dPkC8PWQ==
 
 "@xstate/react@0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@xstate/react/-/react-0.8.1.tgz#df200547cca24c909572b7aef1ddab8bca3a0603"
   integrity sha512-8voZm4GX3x70lNQVvoGedoObPYapkQIbgMhE+xOQEsm8Ait4Zto6R01SZ6WJD4qvLl8JPV6uq96OcFRdEsVESg==
 
-"@xstate/test@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@xstate/test/-/test-0.3.0.tgz#366ffd9eb349a5244d8e6d085d85b86879f4bca7"
-  integrity sha512-s9QlyyER/ox606+Ihw0TlQBDniU+OIveS1VQtm56FL+kKbUQGHO0NTBXX33z18MjrFt2hmmjgehs3wHB0RQ6sg==
+"@xstate/test@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@xstate/test/-/test-0.5.1.tgz#c3cf7c2f4c9b0527d562ac5663ea4cd0c8298f0b"
+  integrity sha512-Ltz46QR9QvEuhlNy+zvs+5ylfpGXzDBh+jVC1/WL8w88uEbN+Wf1bJ/Bi5OWVWWEgXJxfcmlavN4hJOqtQuqgQ==
   dependencies:
-    "@xstate/graph" "^1.0.0"
+    "@xstate/graph" "^1.4.1"
     chalk "^2.4.2"
 
 "@xtuc/ieee754@^1.2.0":
@@ -11710,10 +11710,10 @@ xmlchars@^2.1.1:
   resolved "https://registry.yarnpkg.com/xmlchars/-/xmlchars-2.1.1.tgz#ef1a81c05bff629c2280007f12daca21bd6f6c93"
   integrity sha512-7hew1RPJ1iIuje/Y01bGD/mXokXxegAgVS+e+E0wSi2ILHQkYAH1+JXARwTjZSM4Z4Z+c73aKspEcqj+zPPL/w==
 
-xstate@4.7.8:
-  version "4.7.8"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.7.8.tgz#a12ae521b105711b06cf95ab2652c1640d75d62d"
-  integrity sha512-pRCBefTPvQRJWpvFi9xP4PkgozqpppKjC4xM1WjeFWxIroV1b7Jch4tnky30ZO4ywpVyn8bQMNRIC+5tuTfEKQ==
+xstate@4.38.3:
+  version "4.38.3"
+  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.38.3.tgz#4e15e7ad3aa0ca1eea2010548a5379966d8f1075"
+  integrity sha512-SH7nAaaPQx57dx6qvfcIgqKRXIh4L0A1iYEqim4s1u7c9VoCgzZc+63FY90AKU4ZzOC2cfJzTnpO4zK7fCUzzw==
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
